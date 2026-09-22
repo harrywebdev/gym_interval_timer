@@ -12,3 +12,4 @@
 | B — UI a integrace | ticket #2, rebase na `work/logic` | IN_PROGRESS | B pokračuje nad reviewed kontraktem bez merge worktree; vlastní pouze integrační/UI/PWA/dokumentační soubory a doplní browserovou regresní kontrolu. |
 | B — UI a integrace | nezávislý reviewer, ticket #2 | REJECT | SW cache při první nekontrolované návštěvě nezachytí hashované assety pro okamžitý offline reload; browser suite nedokončila v omezeném sandboxovém běhu. |
 | B — UI a integrace | ticket #2 | IN_PROGRESS | Opravit offline cache zobecněně s regresním testem a interně omezit délku browser testu; skutečný browser výsledek zůstane evidence pro další review. |
+| B — UI a integrace | nezávislý reviewer, ticket #2 | REJECT | Offline cache je staticky ověřená a Vitest/build PASS, ale povinný Playwright běh po 30,2 s skončil `timedout` bez dokončených výsledků; reviewer podle pravidel nemůže dát PASS. |
