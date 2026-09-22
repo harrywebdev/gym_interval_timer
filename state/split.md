@@ -7,3 +7,5 @@
 | A — logika a invarianty | `npm test`, `git diff --check` | PASS | Vitest: 1 soubor, 3 testy passed. Kontrola diffu bez chyb; připraveno k nezávislému review. |
 | A — logika a invarianty | https://github.com/harrywebdev/gym_interval_timer/issues/1 | REJECT | Nezávislý reviewer odhalil zobecněnou chybu: záporný zbytek JavaScriptu v `cueForBoundary` mapoval záporné čtvrtminutové hranice mimo vzor hodin. |
 | A — logika a invarianty | `npm test`, `git diff --check` | PASS | Opraven normalizovaný modulo indexu na 0–3; přidán property/regresní test pro 2 000 záporných hranic a `-15 000 → :45 → 3` pípnutí. Vitest: 4 testy passed. |
+| A — logika a invarianty | nezávislý reviewer | PASS | Druhé oddělené review po opravě ticketu #1: všechny relevantní invarianty prošly, `npm test` 4/4 PASS. |
+| B — UI a integrace | https://github.com/harrywebdev/gym_interval_timer/issues/2 | REJECT | Nezávislý reviewer: chybí import/instanciace timeru, funkční Start/Stop, audio/persistence/offline cesta a testy se bez `src/timer.ts` nesbírají. |
