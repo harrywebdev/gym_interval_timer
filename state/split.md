@@ -9,3 +9,4 @@
 | A — logika a invarianty | `npm test`, `git diff --check` | PASS | Opraven normalizovaný modulo indexu na 0–3; přidán property/regresní test pro 2 000 záporných hranic a `-15 000 → :45 → 3` pípnutí. Vitest: 4 testy passed. |
 | A — logika a invarianty | nezávislý reviewer | PASS | Druhé oddělené review po opravě ticketu #1: všechny relevantní invarianty prošly, `npm test` 4/4 PASS. |
 | B — UI a integrace | https://github.com/harrywebdev/gym_interval_timer/issues/2 | REJECT | Nezávislý reviewer: chybí import/instanciace timeru, funkční Start/Stop, audio/persistence/offline cesta a testy se bez `src/timer.ts` nesbírají. |
+| B — UI a integrace | ticket #2, rebase na `work/logic` | IN_PROGRESS | B pokračuje nad reviewed kontraktem bez merge worktree; vlastní pouze integrační/UI/PWA/dokumentační soubory a doplní browserovou regresní kontrolu. |
