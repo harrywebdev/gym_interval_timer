@@ -28,6 +28,18 @@ function expectedNextBoundary(nowMs: number): number {
   return (Math.floor(nowMs / QUARTER_MS) + 1) * QUARTER_MS;
 }
 
+function expectedCueForBoundary(boundaryMs: number): Cue {
+  const quarterIndex = Math.floor(boundaryMs / QUARTER_MS);
+  const quarterWithinMinute = ((quarterIndex % 4) + 4) % 4;
+
+  return quarterWithinMinute === 0
+    ? { kind: 'boundary', shortBeepCount: 0 }
+    : {
+        kind: 'quarter',
+        shortBeepCount: quarterWithinMinute as 1 | 2 | 3,
+      };
+}
+
 describe('invariants derived from docs/spec.md', () => {
   it('always schedules the next cue at a strictly future 15-second system-clock boundary', () => {
     const randomTimes = randomIntegers(0x1badb002, 2_000).map(
@@ -84,6 +96,28 @@ describe('invariants derived from docs/spec.md', () => {
         });
       }
     }
+  });
+
+  it('maps negative quarter-minute boundaries using their clock position within a minute', () => {
+    const randomNegativeBoundaries = randomIntegers(0x4e474154, 2_000).map(
+      (value) => -(value + 1) * QUARTER_MS,
+    );
+    const edgeCases = [
+      -QUARTER_MS,
+      -2 * QUARTER_MS,
+      -3 * QUARTER_MS,
+      -MINUTE_MS,
+      -24 * 60 * MINUTE_MS,
+    ];
+
+    for (const boundaryMs of [...randomNegativeBoundaries, ...edgeCases]) {
+      expect(cueForBoundary(boundaryMs)).toEqual(expectedCueForBoundary(boundaryMs));
+    }
+
+    expect(cueForBoundary(-QUARTER_MS)).toEqual({
+      kind: 'quarter',
+      shortBeepCount: 3,
+    });
   });
 
   it('always permits only a cue delivered on its boundary or within 250 ms afterwards', () => {
