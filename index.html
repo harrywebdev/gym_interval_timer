@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Gym Interval Timer</title>
+    <script>
+      // Apply the stored theme before first paint to avoid a light/dark flash.
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="toolbar">
+      <label class="theme-toggle" title="Toggle dark mode">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+          />
+        </svg>
+        <button
+          id="theme-switch"
+          class="switch"
+          type="button"
+          role="switch"
+          aria-checked="false"
+          aria-label="Dark mode"
+        >
+          <span class="switch-thumb"></span>
+        </button>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      </label>
+
+      <button
+        id="sound-problem"
+        class="icon-button"
+        type="button"
+        aria-label="Sound is blocked. Tap to enable audio."
+        title="Sound is blocked. Tap to enable audio."
+        hidden
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+          <path d="m22 9-6 6M16 9l6 6" />
+        </svg>
+      </button>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <p class="card-label">Local time</p>
+        <time id="clock" class="clock">--:--:--</time>
+        <p id="status" class="card-description">Cues every 15 seconds</p>
+        <button id="toggle" class="button" type="button">Start</button>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
