@@ -24,7 +24,8 @@ export function nextBoundaryAfter(nowMs: number): number {
 
 /** Returns the prescribed audio pattern for a quarter-minute boundary. */
 export function cueForBoundary(boundaryMs: number): Cue {
-  const quarterWithinMinute = Math.floor(boundaryMs / QUARTER_MINUTE_MS) % 4;
+  const quarterIndex = Math.floor(boundaryMs / QUARTER_MINUTE_MS);
+  const quarterWithinMinute = ((quarterIndex % 4) + 4) % 4;
 
   if (quarterWithinMinute === 0) {
     return { kind: 'boundary', shortBeepCount: 0 };

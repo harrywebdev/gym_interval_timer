@@ -5,3 +5,5 @@
 | UI kontrola 100/3 | uživatel | NOT_APPLICABLE | Výslovně ignorovat; šlo o text z jiného problému. |
 | A — logika a invarianty | `docs/spec.md`, `tests/spec-invariants.test.ts` | IMPLEMENTED | Přidán `src/timer.ts`: přísně budoucí 15s hranice, vzory :00/:15/:30/:45 a okno doručení 0–250 ms včetně. Čeká ověření testy. |
 | A — logika a invarianty | `npm test`, `git diff --check` | PASS | Vitest: 1 soubor, 3 testy passed. Kontrola diffu bez chyb; připraveno k nezávislému review. |
+| A — logika a invarianty | https://github.com/harrywebdev/gym_interval_timer/issues/1 | REJECT | Nezávislý reviewer odhalil zobecněnou chybu: záporný zbytek JavaScriptu v `cueForBoundary` mapoval záporné čtvrtminutové hranice mimo vzor hodin. |
+| A — logika a invarianty | `npm test`, `git diff --check` | PASS | Opraven normalizovaný modulo indexu na 0–3; přidán property/regresní test pro 2 000 záporných hranic a `-15 000 → :45 → 3` pípnutí. Vitest: 4 testy passed. |
