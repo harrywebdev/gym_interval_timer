@@ -1,34 +1,35 @@
-/*
- * shadcn/ui-inspired tokens, reduced to pure black and white.
- * Dark mode inverts the palette via the `.dark` class on <html>.
- */
+/* Dark mode inverts the black canvas and white card used by light mode. */
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
   --card: #ffffff;
+  --card-foreground: #0a0a0a;
   --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --ring: #0a0a0a;
+  --border: #262626;
+  --input: #262626;
+  --ring: #fafafa;
   --primary: #0a0a0a;
   --primary-foreground: #fafafa;
-  --accent: #f5f5f5;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #0a0a0a;
   --radius: 0.75rem;
 
   color-scheme: light;
 }
 
 :root.dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
+  --background: #fafafa;
+  --foreground: #0a0a0a;
   --card: #0a0a0a;
+  --card-foreground: #fafafa;
   --muted-foreground: #a3a3a3;
-  --border: #262626;
-  --input: #262626;
-  --ring: #fafafa;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
   --primary: #fafafa;
   --primary-foreground: #0a0a0a;
-  --accent: #171717;
+  --secondary: #171717;
+  --secondary-foreground: #fafafa;
 
   color-scheme: dark;
 }
@@ -49,8 +50,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
   transition:
@@ -86,8 +93,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
-    1rem max(1rem, env(safe-area-inset-left));
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) 1rem
+    max(1rem, env(safe-area-inset-left));
 }
 
 .theme-toggle {
@@ -109,7 +116,7 @@ button:focus-visible {
   transition: background-color 150ms ease;
 }
 
-.switch[aria-checked='true'] {
+.switch[aria-checked="true"] {
   background: var(--primary);
 }
 
@@ -123,7 +130,7 @@ button:focus-visible {
   transition: transform 150ms ease;
 }
 
-.switch[aria-checked='true'] .switch-thumb {
+.switch[aria-checked="true"] .switch-thumb {
   transform: translateX(1.25rem);
 }
 
@@ -144,7 +151,7 @@ button:focus-visible {
 }
 
 .icon-button:hover {
-  background: var(--accent);
+  background: var(--secondary);
 }
 
 .icon-button .icon {
@@ -171,6 +178,7 @@ button:focus-visible {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--card);
+  color: var(--card-foreground);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
   text-align: center;
 }
@@ -216,13 +224,12 @@ button:focus-visible {
   opacity: 0.9;
 }
 
-.button[data-variant='outline'] {
-  background: var(--background);
-  color: var(--foreground);
-  border-color: var(--border);
+.button[data-variant="outline"] {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--secondary);
 }
 
-.button[data-variant='outline']:hover {
-  opacity: 1;
-  background: var(--accent);
+.button[data-variant="outline"]:hover {
+  opacity: 0.9;
 }

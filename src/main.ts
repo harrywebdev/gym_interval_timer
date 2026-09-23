@@ -43,7 +43,7 @@ function writeStorage(key: string, value: string | null): void {
 function applyTheme(dark: boolean): void {
   root.classList.toggle('dark', dark);
   themeSwitch.setAttribute('aria-checked', String(dark));
-  themeColor.content = dark ? '#0a0a0a' : '#ffffff';
+  themeColor.content = dark ? '#fafafa' : '#0a0a0a';
 }
 
 applyTheme(root.classList.contains('dark'));
